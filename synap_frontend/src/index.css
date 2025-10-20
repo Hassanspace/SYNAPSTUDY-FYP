@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+
+
+html, body {
+  margin: 0%;
+  padding: 0%;
+  background-color: white;
+}
+
+
+.step-primary {
+  --tw-step-primary: #075E54 !important;
+}
+
+/* Force step-primary to use WhatsApp green */
+.steps .step-primary:before,
+.steps .step-primary:after {
+  background-color: #075E54 !important;
+  border-color: #075E54 !important;
+  color: #075E54 !important;
+}
+
+/* Bigger circle */
+.steps .step:after {
+  width: 2.5rem !important;   /* default ~1.5rem */
+  height: 2.5rem !important;
+  border-width: 3px !important; /* thicker border */
+}
+
+/* Thicker connecting line */
+.steps .step:before {
+  height: 2px !important; /* default ~2px */
+}
+
+/* Remove DaisyUI default border + black line */
+.steps .step:after {
+  background-color: white !important;   /* inactive circle is pure white */
+  border: none !important;              /* remove border */
+  color: transparent !important;        /* hide default number */
+}
+
+/* Active step circle */
+.steps .step.step-primary:after {
+  background-color: #075E54 !important; /* custom green */
+  border: none !important;              /* no border */
+}
+
+/* Connecting line (default) */
+.steps .step:before {
+  background-color: #C3C3C3 !important;   /* inactive = white */
+  border: none !important;
+}
+
+/* Connecting line when active */
+.steps .step.step-primary:before {
+  background-color: #075E54 !important; /* active = custom green */
+}
+
+.gradient-border {
+  border: 2px solid transparent;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(180deg, #25D366 0%, #704FE6 100%);
+  border-radius: 12px; /* match your design */
+}
+
+.brainyai{
+  background: linear-gradient(90deg, #EDBCFF 0%, #FF5ED2 50%, #34B7F1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+
+.quizesinvite{
+  background: linear-gradient(90deg, rgba(237, 188, 255, 0.1) 0%, rgba(255, 94, 210, 0.1) 50%, rgba(52, 183, 241, 0.1) 100%);
+
+}
+
+.displayquiz{
+  background: linear-gradient(90deg, rgba(237, 188, 255, 0.1) 0%, rgba(255, 94, 210, 0.1) 50%, rgba(52, 183, 241, 0.1) 100%);
+
+}

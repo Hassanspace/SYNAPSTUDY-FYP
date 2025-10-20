@@ -1,0 +1,16 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-12" y="-12" width="72" height="72"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(6px);clip-path:url(#bgblur_0_64_323_clip_path);height:100%;width:100%"></div></foreignObject><circle data-figma-bg-blur-radius="12" cx="24" cy="24" r="24" fill="url(#paint0_linear_64_323)" fill-opacity="0.3"/>
+<g clip-path="url(#clip1_64_323)">
+<path d="M25.8617 22.4688L33.147 14H31.4205L25.0948 21.3531L20.0423 14H14.2148L21.8552 25.1194L14.2148 34H15.9414L22.6217 26.2348L27.9573 34H33.7848L25.8612 22.4688H25.8617ZM23.497 25.2172L22.7228 24.11L16.5634 15.2997H19.2153L24.1858 22.41L24.9598 23.5172L31.4212 32.7594H28.7697L23.497 25.2177V25.2172Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="bgblur_0_64_323_clip_path" transform="translate(12 12)"><circle cx="24" cy="24" r="24"/>
+</clipPath><linearGradient id="paint0_linear_64_323" x1="24" y1="0" x2="24" y2="48" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<clipPath id="clip1_64_323">
+<rect width="20" height="20" fill="white" transform="translate(14 14)"/>
+</clipPath>
+</defs>
+</svg>
