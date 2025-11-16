@@ -6,16 +6,16 @@ import sbcmp from "../../assets/sbcmp.svg";
 
 const SubscriptionSection = () => {
   return (
-    <section className="relative w-full py-20 text-gray-800 overflow-hidden z-10">
+    <section className="relative w-full py-20 text-gray-800 overflow-hidden bg-white z-10">
       {/* Floating Illustrations */}
       <img
         src={wifiImg}
-        alt="book"
+        alt="wifi"
         className="absolute top-30 left-[2%] w-14 md:w-20 lg:w-28 xl:w-36"
       />
       <img
         src={ballImg}
-        alt="hand"
+        alt="ball"
         className="absolute top-[0%] right-[0%] w-14 md:w-20 lg:w-28 xl:w-40"
       />
       <img
@@ -30,24 +30,25 @@ const SubscriptionSection = () => {
           PRICING PLANS
         </h2>
         <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-snug">
-          FLEXIBLE PLANS FOR EVERY <br /> LEARNER
+          FLEXIBLE PLANS FOR EVERY LEARNER
         </h3>
       </div>
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-center px-4 md:px-10 lg:px-16">
-        {/* Basic Plan */}
+        {/* Free Plan */}
         <div className="w-full max-w-sm mx-auto h-auto flex flex-col justify-between bg-white rounded-2xl shadow-lg p-6">
           <div>
             <h4 className="text-gray-600 font-bold uppercase text-sm md:text-base">
-              Basic Plan
+              Free Plan
             </h4>
             <h3 className="text-4xl md:text-5xl font-extrabold text-[#704FE6] mt-2">
               FREE
             </h3>
             <ul className="mt-4 space-y-2 text-gray-700 font-bold text-sm md:text-base">
-              <li>• Free quizzes and basic performance reports</li>
-              <li>• Limited access to content</li>
+              <li>• Access to limited classes and subjects</li>
+              <li>• Attempt basic quizzes and view scores</li>
+              <li>• View shared materials in shelves</li>
             </ul>
           </div>
           <button className="w-full mt-6 py-3 bg-[#704FE6] hover:bg-purple-700 text-white font-semibold rounded-lg text-sm md:text-base">
@@ -55,11 +56,11 @@ const SubscriptionSection = () => {
           </button>
         </div>
 
-        {/* Single User */}
+        {/* Individual Premium Plan */}
         <div className="w-full max-w-sm mx-auto h-auto flex flex-col justify-between bg-[#25D366] rounded-2xl shadow-lg p-6">
           <div>
             <h4 className="text-white font-bold uppercase text-sm md:text-base">
-              Single User
+              Premium Individual
             </h4>
             <h3 className="text-4xl md:text-5xl font-extrabold text-white mt-2 flex items-start">
               <span className="text-xs md:text-sm font-medium translate-y-2.5 mr-1">
@@ -70,10 +71,11 @@ const SubscriptionSection = () => {
                 /MONTHLY
               </span>
             </h3>
-
             <ul className="mt-4 space-y-2 text-white font-bold text-sm md:text-base">
-              <li>• Access to structured course, AI-powered features, quizzes</li>
-              <li>• Enhanced analytics and recommendations</li>
+              <li>• Full access to all classes, assignments, and quizzes</li>
+              <li>• AI-powered chatbot assistance and recommendations</li>
+              <li>• Safe discussion boards for assignments & classes</li>
+              <li>• Track your progress and performance</li>
             </ul>
           </div>
           <button className="w-full mt-6 py-3 bg-white text-[#25D366] font-semibold rounded-lg text-sm md:text-base">
@@ -81,17 +83,19 @@ const SubscriptionSection = () => {
           </button>
         </div>
 
-        {/* Institutions */}
+        {/* Institutional Plan */}
         <div className="w-full max-w-sm mx-auto h-auto flex flex-col justify-between bg-white rounded-2xl shadow-lg p-6">
           <div>
             <h4 className="text-gray-600 font-bold uppercase text-sm md:text-base">
-              INSTITUTIONS
+              Institutions
             </h4>
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#34B7F1] mt-2">
-              CUSTOME
+              CUSTOM
             </h3>
             <ul className="mt-4 space-y-2 text-gray-700 font-bold text-sm md:text-base">
-              <li>• All premium features + personalized coaching & tools</li>
+              <li>• All premium individual features</li>
+              <li>• Personalized class management tools</li>
+              <li>• Dedicated support and analytics</li>
             </ul>
           </div>
           <button className="w-full mt-6 py-3 bg-[#34B7F1] hover:bg-blue-700 text-white font-semibold rounded-lg text-sm md:text-base">

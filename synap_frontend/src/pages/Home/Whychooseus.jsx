@@ -13,37 +13,36 @@ import behindwhy from "../../assets/behindwhychoose.svg";
 
 const Whychooseus = () => {
   const points = [
-    { image: learningImg, text: "Gamified Learning Experience" },
-    { image: quizImg, text: "Daily Interactive Quizzes" },
-    { image: aiImg, text: "AI-Driven Personalized Recommendations" },
-    { image: leaderboardImg, text: "Competitive Matches With Leaderboards" },
-    { image: courseImg, text: "Structured, Mandatory Course Paths" },
-    { image: subscriptionImg, text: "Flexible Subscription Options" },
+    { image: learningImg, text: "Structured Learning Hub with Classes & Subjects" },
+    { image: quizImg, text: "Interactive Quizzes Preparation" },
+    { image: aiImg, text: "AI Chatbot & Smart Assistance for Personalized Guidance" },
+    { image: courseImg, text: "Assignments, Quizzes, and Shelves to Organize Learning" },
+    { image: subscriptionImg, text: "Flexible Access with Freemium & Premium Features" },
   ];
 
   return (
-    <section className="relative w-full px-6 py-20  text-gray-800 overflow-hidden">
+    <section className="relative w-full px-6 py-20 text-gray-800 overflow-hidden bg-white">
       {/* Decorative images */}
       <img
         src={cornerShape}
         alt="corner"
-        className="absolute top-0 left-0 w-32  opacity-90"
+        className="absolute top-0 left-0 w-32 opacity-90"
       />
       <img
         src={spiralImg}
         alt="spiral"
-        className="absolute top-24  left-[39.5%] w-16 opacity-80"
+        className="absolute top-24 left-[39.5%] w-16 opacity-80"
       />
       <img
         src={dottedImg}
         alt="dots"
-        className="absolute top-12 right-[41%] w-12 h-12 "
+        className="absolute top-12 right-[41%] w-12 h-12"
       />
 
       {/* Heading */}
       <div className="text-center mb-12 relative z-10">
         <h2 className="text-[#25D366] font-semibold uppercase tracking-wide">
-          Brainy
+          SynapStudy
         </h2>
         <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900">
           WHY CHOOSE US?
@@ -70,14 +69,11 @@ const Whychooseus = () => {
 
         {/* Right Section (Image with abstract behind) */}
         <div className="flex justify-center items-center relative">
-          {/* Abstract background image */}
           <img
             src={behindwhy}
             alt="abstract background"
             className="absolute -top-106 -right-105 inset-0 m-auto h-[150px] w-[150px] opacity-70 -z-10"
           />
-
-          {/* Main WhyChooseUs image */}
           <img
             src={whyImg}
             alt="Why Choose Us"
@@ -88,8 +84,8 @@ const Whychooseus = () => {
 
       {/* CTA Button */}
       <div className="mt-16 flex justify-center">
-        <button className="bg-gradient-to-r from-green-500 to-purple-500 hover:opacity-90 text-white font-medium px-8 py-4 rounded-[12px] shadow-lg transition">
-          START YOUR JOURNEY NOW
+        <button className="bg-gradient-to-r from-[#25D366] via-[#3AC2FF] to-[#6A4CFF] hover:opacity-90 text-white font-medium px-8 py-4 rounded-[12px] shadow-lg transition">
+          START LEARNING NOW
         </button>
       </div>
     </section>

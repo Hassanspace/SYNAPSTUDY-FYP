@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="h-full flex items-center justify-between px-6">
         {/* Logo */}
         <div className="text-2xl font-bold tracking-wide">
-          <img src={logo} alt="Logo" />
+          <h1 className="font-bold text-3xl text-black">SynapStudy</h1>
         </div>
 
         {/* Desktop Nav */}

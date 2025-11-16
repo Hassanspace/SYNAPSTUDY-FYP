@@ -3,56 +3,30 @@ import fishImg from "../../assets/fish.svg";
 import spiralImg from "../../assets/circle.svg";
 import userImg from "../../assets/user.svg"; // testimonial avatar
 
-// A lot of testimonials to make 3 full rows
 const testimonials = [
   {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
+    name: "Ali Khan",
+    text: "SynapStudy's AI assistant helped me solve difficult questions quickly!",
     rating: 5,
   },
   {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
+    name: "Sara Ahmed",
+    text: "Safe discussion boards let me collaborate without worrying about privacy.",
     rating: 5,
   },
   {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
+    name: "Hassan Raza",
+    text: "Quizzes and assignments tailored to my learning pace made studying fun.",
     rating: 5,
   },
   {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
+    name: "Fatima Noor",
+    text: "The platform keeps me motivated with progress tracking and AI recommendations.",
     rating: 5,
   },
   {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
-    rating: 5,
-  },
-  {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
-    rating: 5,
-  },
-  {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
-    rating: 5,
-  },
-  {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
-    rating: 5,
-  },
-  {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
-    rating: 5,
-  },
-  {
-    name: "Alison Jordon",
-    text: "This platform made my CSS preparation enjoyable and effective",
+    name: "Zain Malik",
+    text: "I love the shelves feature! Everything organized and easy to access.",
     rating: 5,
   },
 ];
@@ -76,11 +50,11 @@ const Card = ({ data }) => (
 
 const TestimonialsSection = () => {
   return (
-    <section className="relative w-full py-20 text-gray-800 overflow-hidden z-10 bg-white">
+    <section className="relative w-full py-20 text-gray-800 overflow-hidden bg-white z-10">
       {/* Floating Illustrations */}
       <img
         src={fishImg}
-        alt="wifi"
+        alt="decorative fish"
         className="absolute top-10 left-[17%] w-14 md:w-20 lg:w-28 xl:w-30"
       />
       <img
@@ -136,13 +110,11 @@ const TestimonialsSection = () => {
           }
           .animate-marquee {
             display: flex;
-            animation: marquee 10s linear forwards;
-            animation-iteration-count: 1; /* run once then stop */
+            animation: marquee 12s linear infinite;
           }
           .animate-marquee-reverse {
             display: flex;
-            animation: marquee-reverse 10s linear forwards;
-            animation-iteration-count: 1; /* run once then stop */
+            animation: marquee-reverse 12s linear infinite;
           }
         `}
       </style>
