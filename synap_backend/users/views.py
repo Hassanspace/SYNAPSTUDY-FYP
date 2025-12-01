@@ -11,7 +11,8 @@ from .serializers import RegisterSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomTokenObtainPairSerializer
 from rest_framework.permissions import AllowAny
-
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UserProfileSerializer
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
@@ -19,6 +20,23 @@ class RegisterView(generics.CreateAPIView):
     
 class CustomLoginView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.user
+
+        response_data = {
+            "refresh": serializer.validated_data["refresh"],
+            "access": serializer.validated_data["access"],
+            "email": user.email,
+            "username": user.username,
+            "role": user.role,
+            "profile_completed": bool(user.first_name and user.last_name and getattr(user, "profile_image", None))
+        }
+
+        return Response(response_data)
+
 
 
 class GoogleLoginView(APIView):
@@ -40,3 +58,18 @@ class GoogleLoginView(APIView):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    
+    
+class UserProfileAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserProfileSerializer(request.user)
+        return Response(serializer.data)
+
+    def put(self, request):
+        serializer = UserProfileSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save(profile_completed=True)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)

@@ -6,6 +6,7 @@ from .serializers import ClassroomSerializer
 from .models import Classroom
 from .utils import generate_join_code
 from django.conf import settings
+from .serializers import UserSerializer
 
 class CreateClassroomAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -85,4 +86,17 @@ class ClassroomListAPIView(APIView):
             classrooms = Classroom.objects.filter(students=user)
 
         serializer = ClassroomSerializer(classrooms, many=True)
+        return Response(serializer.data)
+    
+class ClassroomStudentsAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        try:
+            classroom = Classroom.objects.get(id=pk)
+        except Classroom.DoesNotExist:
+            return Response({"detail": "Classroom not found."}, status=404)
+
+        students = classroom.students.all()
+        serializer = UserSerializer(students, many=True)
         return Response(serializer.data)

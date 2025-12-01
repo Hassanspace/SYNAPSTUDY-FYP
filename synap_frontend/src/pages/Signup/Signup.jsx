@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +11,8 @@ const Signup = () => {
     password2: "",
     role: "student",
   });
-  const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // toggle state
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,7 +21,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setLoading(true);
 
     try {
       const response = await fetch("http://127.0.0.1:8000/api/auth/register/", {
@@ -31,20 +33,36 @@ const Signup = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert("✅ Account created successfully!");
-        navigate("/login");
+        toast.success(" Account created successfully! Redirecting to login...", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+        });
+        setLoading(false);
+        setTimeout(() => navigate("/login"), 2000);
       } else {
         const errorMsg =
           data?.password || data?.email || data?.username || data?.detail || "Signup failed.";
-        setError(Array.isArray(errorMsg) ? errorMsg.join(", ") : errorMsg);
+        toast.error(Array.isArray(errorMsg) ? errorMsg.join(", ") : errorMsg, {
+          position: "top-center",
+          autoClose: 4000,
+        });
+        setLoading(false);
       }
     } catch (err) {
-      setError("Server error. Please try again later.");
+      toast.error("Server error. Please try again later.", { position: "top-center" });
+      setLoading(false);
     }
   };
 
   return (
     <div className="w-full min-h-screen bg-white flex flex-col">
+      {/* Toast container */}
+      <ToastContainer />
+
       {/* Header */}
       <header className="w-full py-5 flex justify-center border-b-4">
         <h1 className="font-bold text-3xl text-black">SynapStudy</h1>
@@ -60,10 +78,6 @@ const Signup = () => {
           <p className="text-center text-gray-700 mb-8">
             Join your smart learning hub
           </p>
-
-          {error && (
-            <p className="text-red-600 text-sm text-center -mt-3 mb-3">{error}</p>
-          )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <input
@@ -85,7 +99,7 @@ const Signup = () => {
               required
             />
 
-            {/* Password Field */}
+            {/* Password */}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -105,7 +119,7 @@ const Signup = () => {
               </button>
             </div>
 
-            {/* Confirm Password Field */}
+            {/* Confirm Password */}
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -125,22 +139,27 @@ const Signup = () => {
               </button>
             </div>
 
+            {/* Role */}
             <select
               name="role"
               value={formData.role}
               onChange={handleChange}
-              className="w-full px-5 py-3 rounded-xl bg-white/60 text-black placeholder-gray-600 border border-gray-400 focus:ring-2 focus:ring-[#4CFF83] outline-none"
+              className="w-full px-5 py-3 rounded-xl bg-white/60 text-black border border-gray-400 focus:ring-2 focus:ring-[#4CFF83] outline-none"
             >
               <option value="student">Student</option>
               <option value="teacher">Teacher</option>
             </select>
 
-            {/* Gradient Button */}
+            {/* Submit */}
             <button
               type="submit"
-              className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#4CFF83] via-[#3AC2FF] to-[#6A4CFF] hover:opacity-90 transition shadow-lg"
+              disabled={loading}
+              className="w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#4CFF83] via-[#3AC2FF] to-[#6A4CFF] hover:opacity-90 transition shadow-lg flex justify-center items-center gap-2"
             >
-              Sign Up
+              {loading && (
+                <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              )}
+              {loading ? "Creating..." : "Sign Up"}
             </button>
           </form>
 

@@ -24,14 +24,29 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
+        // Save tokens
         localStorage.setItem("access", data.access);
         localStorage.setItem("refresh", data.refresh);
-        localStorage.setItem("user", JSON.stringify({
-          email: data.email,
-          username: data.username,
-          role: data.role,
-        }));
-        setTimeout(() => navigate("/dashboard"), 300); // slight delay to show loader
+
+        // Save user info
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            email: data.email,
+            username: data.username,
+            role: data.role,
+            profile_completed: data.profile_completed || false, // add profile_completed
+          })
+        );
+
+        // Redirect based on profile completion
+        setTimeout(() => {
+          if (data.profile_completed) {
+            navigate("/dashboard");
+          } else {
+            navigate("/profile-setup"); // redirect to profile setup page
+          }
+        }, 300); // slight delay to show loader
       } else {
         setError(data.detail || "Invalid credentials");
         setLoading(false); // stop loader on error
@@ -59,7 +74,9 @@ const Login = () => {
           </p>
 
           {error && (
-            <p className="text-red-600 text-sm text-center -mt-3 mb-3">{error}</p>
+            <p className="text-red-600 text-sm text-center -mt-3 mb-3">
+              {error}
+            </p>
           )}
 
           <form onSubmit={handleLogin} className="flex flex-col gap-5">

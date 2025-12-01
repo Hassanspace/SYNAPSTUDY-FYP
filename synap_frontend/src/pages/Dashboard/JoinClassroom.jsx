@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const JoinClassroom = () => {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("info");
+
+  const navigate = useNavigate(); // hook for navigation
 
   const handleJoin = async (e) => {
     e.preventDefault();
@@ -14,21 +17,23 @@ const JoinClassroom = () => {
     const token = localStorage.getItem("access");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/classrooms/join/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ join_code: code }),
-      });
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/classrooms/join/code/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ code: code.trim() }),
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
-        setMessage("🎉 Joined classroom successfully!");
-        setMessageType("success");
-        setCode("");
+        // Redirect to student dashboard after join
+        navigate("/dashboard"); 
       } else {
         setMessage(data.error || "Invalid code. Try again.");
         setMessageType("error");
@@ -44,7 +49,6 @@ const JoinClassroom = () => {
   return (
     <div className="w-full min-h-screen bg-white flex items-center justify-center px-6 py-14">
       <div className="bg-white/20 backdrop-blur-xl border border-gray-300/40 shadow-xl rounded-2xl p-8 w-full max-w-lg">
-        
         <h1 className="text-3xl md:text-4xl font-bold text-center text-black mb-4">
           Join Classroom
         </h1>
@@ -53,7 +57,9 @@ const JoinClassroom = () => {
         </p>
 
         <form onSubmit={handleJoin} className="flex flex-col gap-4">
-          <label className="text-sm font-semibold text-gray-800">Join Code</label>
+          <label className="text-sm font-semibold text-gray-800">
+            Join Code
+          </label>
           <input
             type="text"
             value={code}

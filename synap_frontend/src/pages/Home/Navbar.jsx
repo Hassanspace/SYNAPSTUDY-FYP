@@ -36,20 +36,12 @@ const Navbar = () => {
           <Link to="/" className="hover:text-black">
             Home
           </Link>
-          <Link to="/features" className="hover:text-black">
-            Features
+         
+         <Link to="/Dashboard" className="hover:text-black">
+            Dashboard
           </Link>
-          <Link to="/pricing" className="hover:text-black">
-            Pricing
-          </Link>
-          <Link to="/testimonials" className="hover:text-black">
-            Testimonials
-          </Link>
-          <Link to="/app" className="hover:text-black">
-            App Download
-          </Link>
-          <Link to="/contact" className="hover:text-black">
-            Contact Us
+          <Link to="/Profile" className="hover:text-black">
+            Profile
           </Link>
 
           {/* Conditionally Render Buttons */}
@@ -99,21 +91,13 @@ const Navbar = () => {
           <Link to="/" className="hover:text-black">
             Home
           </Link>
-          <Link to="/features" className="hover:text-black">
-            Features
+          <Link to="/Dashboard" className="hover:text-black">
+            Dashboard
           </Link>
-          <Link to="/pricing" className="hover:text-black">
-            Pricing
+          <Link to="/Profile" className="hover:text-black">
+            Profile
           </Link>
-          <Link to="/testimonials" className="hover:text-black">
-            Testimonials
-          </Link>
-          <Link to="/app" className="hover:text-black">
-            App Download
-          </Link>
-          <Link to="/contact" className="hover:text-black">
-            Contact Us
-          </Link>
+        
 
           {!user ? (
             <>
